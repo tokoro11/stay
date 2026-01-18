@@ -1,0 +1,35 @@
+<div class="text-center">
+  <div class="card room-card">
+    <%= image_tag @room.image, class: "card-img-top" if @room.image.attached? %>
+    <div class="card-body">
+      <h2><%= @room.title %></h2>
+      <p><%= @room.live %></p>
+      <p><%= @room.content %></p>
+      <p>1泊料金: ¥<%= @room.money %></p>
+    </div>
+  </div>
+</div>
+
+<!-- 直前のページに戻るリンク -->
+<div class="mb-3">
+  <%= link_to "戻る", "javascript:history.back()", class: "btn btn-secondary" %>
+</div>
+
+<h1>予約フォーム</h1>
+
+<%= form_for @reservation, url: room_reservations_path(@room) do |f| %>
+  <dl>
+    <dt>開始日</dt>
+    <dd><%= f.date_field :start_at %></dd>
+
+    <dt>終了日</dt>
+    <dd><%= f.date_field :end_at %></dd>
+
+    <dt>人数</dt>
+    <dd><%= f.number_field :people %></dd>
+
+    <%= f.hidden_field :room_id, value: @room.id %>
+  </dl>
+
+  <%= f.submit "確認画面へ", class: "btn btn-primary" %>
+<% end %>

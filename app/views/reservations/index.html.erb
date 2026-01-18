@@ -1,0 +1,41 @@
+<h1>予約一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>宿泊日</th>
+      <th>人数</th>
+      <th>合計金額</th>
+      <th>予約確定日時</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td>
+          <% begin %>
+            <% if reservation.room.image.attached? %>
+              <%= image_tag reservation.room.image.variant(resize_to_limit: [150, 150]).processed, alt: reservation.room.title %>
+            <% else %>
+              <%= image_tag "no_image.png", width: 150, height: 150, alt: "画像なし" %>
+            <% end %>
+          <% rescue ActiveStorage::FileNotFoundError %>
+            <%= image_tag "no_image.png", width: 150, height: 150, alt: "画像なし" %>
+          <% end %>
+        </td>
+
+        <td><%= reservation.room.title %></td>
+        <td><%= reservation.start_at.strftime("%Y/%m/%d") %> ～ <%= reservation.end_at.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.people %> 人</td>
+        <td>¥<%= reservation.total_price %></td>
+        <td><%= reservation.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") rescue '-' %></td>
+        <td>
+          <%= button_to "削除", reservation_path(reservation), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
