@@ -16,18 +16,22 @@
     <% @reservations.each do |reservation| %>
       <tr>
         <td>
-          <% if reservation.room.image.attached? %>
-            <%= image_tag reservation.room.image.variant(resize_to_limit: [150, 150]).processed, alt: reservation.room.title %>
-          <% else %>
-            <span>画像なし</span>
+          <% begin %>
+            <% if reservation.room.image.attached? %>
+              <%= image_tag reservation.room.image.variant(resize_to_limit: [150, 150]).processed, alt: reservation.room.title %>
+            <% else %>
+              <%= image_tag "no_image.png", width: 150, height: 150, alt: "画像なし" %>
+            <% end %>
+          <% rescue ActiveStorage::FileNotFoundError %>
+            <%= image_tag "no_image.png", width: 150, height: 150, alt: "画像なし" %>
           <% end %>
         </td>
+
         <td><%= reservation.room.title %></td>
         <td><%= reservation.start_at.strftime("%Y/%m/%d") %> ～ <%= reservation.end_at.strftime("%Y/%m/%d") %></td>
         <td><%= reservation.people %> 人</td>
         <td>¥<%= reservation.total_price %></td>
         <td><%= reservation.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") rescue '-' %></td>
-
         <td>
           <%= button_to "削除", reservation_path(reservation), method: :delete, data: { confirm: "本当に削除しますか？" } %>
         </td>

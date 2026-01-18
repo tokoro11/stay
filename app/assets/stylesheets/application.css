@@ -14,183 +14,173 @@
  *= require_self
  */
 
-
- body{
-	font-size: 1em;
-	line-height: 1.6em;
-	background-color: #efefef;
-	color: #333;
-}
-/* a{
-	color: #fff;
-	text-decoration: none;
-} */
-a:hover{
-	color: #444;
-	background-color: #efefef;
-}
-.content{
-	width: 980px;
-	margin: 0 auto;
-	padding: 60px 40px;
-	background-color: #fff;
-}
-h1{
-	margin-bottom: 2em;
-	font-size: 1.6em;
-	text-align: center;
-}
-h2{
-	margin-bottom: 1em;
-	font-size: 1.3em;
+/* ===== 全体の基本設定 ===== */
+body {
+  font-size: 1em;
+  line-height: 1.6em;
+  background-color: #efefef;
+  color: #333;
 }
 
-/* Menu */
-
-header{
-	/* todo: delete margin-bottom: 13em; */
-	position: relative;
-	width: 100%;
-	background-color:#444444c7;
-}
-ul > li{
-	display: inline-block;
-}
-ul > li > a{
-	padding: 15px 30px;
-	display: block;
-	font-size: 0.8em;
-	text-transform: uppercase;
-	letter-spacing: .2em;
-}
-ul > li > span{
-	margin-left: 1.2em;
-}
-ul > li:hover > a{
-	background-color: #efefef;
-	color: #444;
+a:hover {
+  color: #444;
+  background-color: #efefef;
 }
 
-/* Submenu */
-
-ul li ul{
-	position: absolute;
-	top: 55px;
-	left: 0;
-}
-ul li ul li{
-	display: block;
-}
-ul li ul li a{
-	background-color: #efefef;
-	color: #444;
-}
-ul li ul li a:hover{
-	background-color: #ddd;
+.content {
+  width: 980px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  background-color: #fff;
 }
 
-/*	Sample01
-------------------------------------------*/
-
-.sample01 ul li ul{
-	display: none;
-}
-.sample01 ul li:hover ul{
-	display: block;
+h1 {
+  margin-bottom: 2em;
+  font-size: 1.6em;
+  text-align: center;
 }
 
-/*	Sample02
-------------------------------------------*/
-
-.sample02 ul li ul li{
-	height: 0;
-	overflow: hidden;
-
-}
-.sample02 ul li:hover ul li{
-	height: auto;
-	overflow: visible;
+h2 {
+  margin-bottom: 1em;
+  font-size: 1.3em;
 }
 
-/*	Sample03
-------------------------------------------*/
-
-.sample03 ul li ul{
-	position: absolute;
-	top: -1000px;
-}
-.sample03 ul li:hover ul{
-	top: 55px;
+/* ===== ヘッダーメニュー ===== */
+header {
+  position: relative;
+  width: 100%;
+  background-color: #444444c7;
 }
 
+ul > li {
+  display: inline-block;
+}
 
+ul > li > a {
+  padding: 15px 30px;
+  display: block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
 
+ul > li > span {
+  margin-left: 1.2em;
+}
 
-/*----- #TODO: user情報ページ用スタイル -----*/
+ul > li:hover > a {
+  background-color: #efefef;
+  color: #444;
+}
+
+/* ===== サブメニュー ===== */
+ul li ul {
+  position: absolute;
+  top: 55px;
+  left: 0;
+}
+
+ul li ul li {
+  display: block;
+}
+
+ul li ul li a {
+  background-color: #efefef;
+  color: #444;
+}
+
+ul li ul li a:hover {
+  background-color: #ddd;
+}
+
+/* ===== ユーザー情報ページ用 ===== */
 .user_main {
   display: flex;
+  gap: 24px;            /* メインとサイドの間隔 */
+  align-items: flex-start; 
 }
 
 .main {
-  width: 100%;
+  flex: 1;              /* 残り幅を取る */
+  max-width: 700px;     /* 最大幅 */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
-/*----- #TODO: side_nav用スタイル -----*/
+/* サイドメニュー */
 .side {
-  width: 20vw;
+  width: 200px;
   padding: 24px 30px;
   order: -1;
 }
+
 .side_nav ul {
   display: flex;
-  padding-left: 0;
   flex-direction: column;
+  padding-left: 0;
 }
+
 .side_nav ul > li {
-  flex-basis: 20%;
+  flex-basis: auto;
   max-width: 174px;
 }
+
 .side_nav a {
   color: #333;
   font-size: 1em;
   text-decoration: none;
+  line-height: 1.5;
   position: relative;
-  line-height: 1.5
 }
+
 .side_nav a.active {
-    color: #4a90e2;
+  color: #4a90e2;
 }
+
 .side_nav a.active:after {
   content: '';
   position: absolute;
-  top: auto;
-  bottom: auto;
+  top: 0;
+  bottom: 0;
   right: 12px;
   display: inline-block;
-  width: 3px;/*線の太さ*/
-  height: 1.5em;/*線の長さ*/
-  background-color: #4a90e2;/*線の色*/
+  width: 3px;
+  background-color: #4a90e2;
 }
 
-.tokyo{
-	color:black !important;
-}
-
-/* 写真 */
-
+/* ===== 写真 ===== */
 .card-img-top {
-  width: 300px
-  
+  width: 300px;
 }
 
-.picture{
-	width: 300px	
+.picture {
+  width: 300px;
 }
 
-.card-img-top2{
-	width: 150px
+.card-img-top2 {
+  width: 150px;
 }
 
+/* プロフィール画像や施設画像の共通クラス */
+.img-fixed {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.img-card {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* ユーザーメニュー */
 .user-menu {
   position: relative;
   display: inline-block;
@@ -226,4 +216,79 @@ ul li ul li a:hover{
   display: none;
 }
 
+/* 特定の色調整 */
+.tokyo {
+  color: black !important;
+}
+/* Home#top 用スタイル */
+.home-top {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 6px;
+}
 
+.home-top h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.home-top form {
+  margin-bottom: 30px;
+}
+
+.home-top input[type="text"] {
+  width: 60%;
+  padding: 8px 12px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.home-top input[type="submit"] {
+  padding: 8px 16px;
+  font-size: 1em;
+  margin-left: 8px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.home-top input[type="submit"]:hover {
+  background-color: #357ab8;
+}
+
+.room-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.room-links .room-card {
+  width: 200px;
+  text-align: center;
+}
+
+.room-links .room-card img.picture {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.room-links .room-card a {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.room-links .room-card a:hover {
+  color: #4a90e2;
+}
