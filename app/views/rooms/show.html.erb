@@ -10,6 +10,11 @@
   </div>
 </div>
 
+<!-- 直前のページに戻るリンク -->
+<div class="mb-3">
+  <%= link_to "戻る", "javascript:history.back()", class: "btn btn-secondary" %>
+</div>
+
 <h1>予約フォーム</h1>
 
 <%= form_for @reservation, url: room_reservations_path(@room) do |f| %>
